@@ -26,13 +26,11 @@ namespace ChatApp.Infrastructure.Injection
                 .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            // ✅ Register Repositories and Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
             services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
             services.AddScoped<IChatRoomMemberRepository, ChatRoomMemberRepository>();
 
-            // ✅ Register AI Bot Strategies
             services.AddTransient<IBotStrategy, GeminiBotStrategy>();
             services.AddTransient<IBotStrategy, ChatGPTBotStrategy>();
 
